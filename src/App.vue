@@ -1,28 +1,28 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+  <div>
+    <h1>Hello Vue!</h1>
+    <loginForm :onLogin='onLogin' /> <!--: === v-bind-->
+    <successMessage :email='email' />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  import loginForm from './LoginForm.vue'
+  import successMessage from './SuccessMessage.vue'
+  export default {
+    data () {
+      return {
+        email: ''
+      }
+    },
+    components: {
+      loginForm,
+      successMessage
+    },
+    methods: {
+      onLogin (data) {
+        this.email = data.email
+      }
+    }
   }
-}
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
