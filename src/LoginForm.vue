@@ -18,8 +18,8 @@
 </template>
 
 <script>
+  import { eventBus } from './main'
   export default {
-    props: ['onLogin'],
     data () {
       return {
         email: '',
@@ -28,7 +28,7 @@
     },
     methods: {
       login () {
-        this.onLogin({
+        eventBus.$emit('login', {
           email: this.email,
           password: this.password
         })
