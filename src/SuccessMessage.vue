@@ -1,5 +1,5 @@
 <template>
-  <h3 v-if='email'>Thanks for loggining, {{email}}</h3>
+  <h3 v-if='email'>Thanks for loggining, <span v-success="'red'">{{email}}</span></h3>
 </template>
 
 <script>
