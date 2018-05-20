@@ -2,8 +2,6 @@
 <html>
 <head>
   <title>Slayer</title>
-  <link rel="stylesheet" type="text/css" href="src/assets/css/foundation.min.css">
-  <link rel="stylesheet" type="text/css" href="src/assets/css/app.css">
 </head>
 <body>
 <div id="app">
@@ -27,12 +25,12 @@
       </div>
     </div>
   </section>
-  <section class="row controls">
+  <section class="row controls" v-if="!gameIsRunning">
     <div class="small-12 columns">
-      <button id="start-game">НОВАЯ ИГРА</button>
+      <button id="start-game" @click="startGame">НОВАЯ ИГРА</button>
     </div>
   </section>
-  <section class="row controls">
+  <section class="row controls" v-else>
     <div class="small-12 columns">
       <button id="attack">АТАКА</button>
       <button id="special-attack">СУПЕР АТАКА</button>
