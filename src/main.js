@@ -17,6 +17,7 @@ new Vue({
       this.gameIsRunning = true
       this.playerHealth = 100
       this.monsterHealth = 100
+      this.turns = []
     },
     attack(){
       const damage = this.calculateDamage(3, 10)
@@ -30,7 +31,12 @@ new Vue({
       this.monsterAttack()
     },
     specialAttack(){
-      this.monsterHealth -= this.calculateDamage(10, 20)
+      const damage = this.calculateDamage(10, 20)
+      this.monsterHealth -= damage
+      this.turns.unshift({
+        isPlayer: true,
+        text: `Вы нанесли супер урон противнику: ${damage}`
+      })
       if(this.checkWin()) return
       this.monsterAttack()
     },
@@ -40,7 +46,10 @@ new Vue({
       } else {
         this.playerHealth = 100
       }
-
+      this.turns.unshift({
+        isPlayer: true,
+        text: 'Вы восстановили 10 едениц здоровья'
+      })
       this.monsterAttack()
     },
     giveUp(){
